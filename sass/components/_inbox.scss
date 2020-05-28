@@ -1,0 +1,66 @@
+.inbox {
+  width: 75%;
+  @include responsive(62) {
+    width: 100%;
+  }
+  //   background-color: var(--color-primary);
+  margin: 0 auto;
+  padding: 3rem;
+  &__heading {
+    color: var(--color-primary);
+    font-size: 3rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    @include responsive(25) {
+      font-size: 2.5rem;
+    }
+  }
+  &__item {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba($color-primary, 0.3);
+    @include responsive(36) {
+      display: grid;
+      grid-template-areas:
+        "texts icons"
+        "time icons";
+      row-gap: 1rem;
+    }
+    @include responsive(25) {
+      grid-template-areas:
+        "texts"
+        "time"
+        "icons";
+      row-gap: 1rem;
+    }
+  }
+  &__text {
+    @include responsive(36) {
+      grid-area: texts;
+    }
+  }
+  &__icon {
+    cursor: pointer;
+    @include responsive(36) {
+      grid-area: icons;
+    }
+  }
+  &__time {
+    text-transform: uppercase;
+    color: rgba($color-grey, 0.8);
+    @include responsive(36) {
+      grid-area: time;
+    }
+  }
+  svg {
+    width: 2.7rem;
+    height: 2.7rem;
+    fill: rgba($color-primary, 0.8);
+  }
+  &__complete {
+    padding: 1rem 0;
+    text-transform: uppercase;
+    color: rgba($color-grey, 0.6);
+  }
+}

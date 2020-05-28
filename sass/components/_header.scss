@@ -1,0 +1,28 @@
+.header {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-secondary, 0.6),
+      rgba($color-primary, 0.6)
+    ),
+    url("../../img/cover6.jpg");
+
+  height: 70vh;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  %text-color {
+    color: var(--color-white);
+  }
+  &__title {
+    font-size: 7rem;
+    font-weight: 300;
+    @extend %text-color;
+  }
+  &__date {
+    @extend %text-color;
+  }
+}

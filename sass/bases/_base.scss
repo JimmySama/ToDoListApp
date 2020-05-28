@@ -1,0 +1,35 @@
+:root {
+  --color-white: #f5faff;
+  --color-grey: rgb(63, 63, 63);
+  --color-primary: rgba(39, 36, 128, 0.89);
+  --color-secondary: #1bc4fcfd;
+}
+//992px : 62em
+//768px : 48em
+//576px : 36em
+//400px : 25em
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 1.6rem;
+  color: var(--color-grey);
+  padding: 7rem;
+  @include responsive(62) {
+    padding: 5rem;
+  }
+  @include responsive(48) {
+    padding: 0rem;
+  }
+}
