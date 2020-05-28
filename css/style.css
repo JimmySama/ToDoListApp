@@ -38,22 +38,6 @@ body {
   }
 }
 
-::-webkit-input-placeholder {
-  color: rgba(63, 63, 63, 0.5);
-}
-
-::-moz-placeholder {
-  color: rgba(63, 63, 63, 0.5);
-}
-
-:-ms-input-placeholder {
-  color: rgba(63, 63, 63, 0.5);
-}
-
-::-ms-input-placeholder {
-  color: rgba(63, 63, 63, 0.5);
-}
-
 ::placeholder {
   color: rgba(63, 63, 63, 0.5);
 }
@@ -312,3 +296,77 @@ body {
 .form__btn:focus {
   outline: none;
 }
+
+.decision {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+.decision__box {
+  background-color: #f5faff;
+  padding: 4rem;
+  text-align: center;
+  display: grid;
+  grid-template-areas: "heading" "form";
+  row-gap: 1rem;
+}
+@media only screen and (max-width: 25em) {
+  .decision__box {
+    padding: 3rem 2rem;
+  }
+}
+.decision__heading {
+  grid-area: heading;
+}
+.decision__form {
+  grid-area: form;
+}
+.decision__btn {
+  padding: 0.7rem 2rem;
+  border: none;
+  cursor: pointer;
+  background-color: #323075;
+  color: #f5faff;
+}
+
+.decision-delete {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.decision-delete__box {
+  background-color: #f5faff;
+  padding: 4rem;
+  text-align: center;
+  display: grid;
+  grid-template-areas: "heading" "form";
+  row-gap: 1rem;
+}
+.decision-delete__heading {
+  grid-area: heading;
+}
+.decision-delete__form {
+  grid-area: form;
+}
+.decision-delete__btn {
+  padding: 0.7rem 2rem;
+  border: none;
+  cursor: pointer;
+  background-color: #323075;
+  color: #f5faff;
+}
+
+/*# sourceMappingURL=style.css.map */

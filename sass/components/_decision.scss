@@ -1,0 +1,76 @@
+.decision {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  &__box {
+    background-color: $color-white;
+    padding: 4rem;
+    @include responsive(25) {
+      padding: 3rem 2rem;
+    }
+    text-align: center;
+    display: grid;
+    grid-template-areas:
+      'heading'
+      'form';
+    row-gap: 1rem;
+  }
+  &__heading {
+    grid-area: heading;
+  }
+
+  &__form {
+    grid-area: form;
+  }
+  &__btn {
+    padding: 0.7rem 2rem;
+    border: none;
+    cursor: pointer;
+    background-color: rgba($color-primary, 1);
+    color: $color-white;
+  }
+}
+
+.decision-delete {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &__box {
+    background-color: $color-white;
+    padding: 4rem;
+    text-align: center;
+    display: grid;
+    grid-template-areas:
+      'heading'
+      'form';
+    row-gap: 1rem;
+  }
+  &__heading {
+    grid-area: heading;
+  }
+
+  &__form {
+    grid-area: form;
+  }
+  &__btn {
+    padding: 0.7rem 2rem;
+    border: none;
+    cursor: pointer;
+    background-color: rgba($color-primary, 1);
+    color: $color-white;
+  }
+}
