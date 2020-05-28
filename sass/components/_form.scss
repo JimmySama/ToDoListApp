@@ -102,6 +102,7 @@
     width: 70%;
     margin: 0 auto;
     border: none;
+
     background: transparent;
     border-bottom: 1px solid rgba($color-primary, 0.4);
     padding: 1.5rem 0;
@@ -115,6 +116,11 @@
     @include responsive(25) {
       width: 85%;
     }
+    border-radius: none;
+    -webkit-border-radius: none;
+    -moz-border-radius: none;
+    -ms-border-radius: none;
+    -o-border-radius: none;
   }
   &__btn {
     width: 70%;

@@ -38,6 +38,22 @@ body {
   }
 }
 
+::-webkit-input-placeholder {
+  color: rgba(63, 63, 63, 0.5);
+}
+
+::-moz-placeholder {
+  color: rgba(63, 63, 63, 0.5);
+}
+
+:-ms-input-placeholder {
+  color: rgba(63, 63, 63, 0.5);
+}
+
+::-ms-input-placeholder {
+  color: rgba(63, 63, 63, 0.5);
+}
+
 ::placeholder {
   color: rgba(63, 63, 63, 0.5);
 }
@@ -254,6 +270,11 @@ body {
   border-bottom: 1px solid rgba(50, 48, 117, 0.4);
   padding: 1.5rem 0;
   font-size: 16px;
+  border-radius: none;
+  -webkit-border-radius: none;
+  -moz-border-radius: none;
+  -ms-border-radius: none;
+  -o-border-radius: none;
 }
 .form__input:focus {
   outline: none;
@@ -291,5 +312,3 @@ body {
 .form__btn:focus {
   outline: none;
 }
-
-/*# sourceMappingURL=style.css.map */
