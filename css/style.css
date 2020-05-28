@@ -168,7 +168,7 @@ body {
     right: 3rem;
   }
 }
-@media only screen and (max-width: 36em) {
+@media only screen and (max-width: 25em) {
   .list {
     width: 5rem;
     height: 5rem;
@@ -235,6 +235,11 @@ body {
   width: 100%;
   padding: 0 8rem;
 }
+@media only screen and (max-width: 36em) {
+  .form__image {
+    padding: 0 7rem;
+  }
+}
 .form__form {
   display: grid;
   padding: 3rem 0;
@@ -253,6 +258,16 @@ body {
 .form__input:focus {
   outline: none;
 }
+@media only screen and (max-width: 36em) {
+  .form__input {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 25em) {
+  .form__input {
+    width: 85%;
+  }
+}
 .form__btn {
   width: 70%;
   margin: 0 auto;
@@ -262,6 +277,16 @@ body {
   background-color: #323075;
   color: #f5faff;
   margin-top: 2rem;
+}
+@media only screen and (max-width: 36em) {
+  .form__btn {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 25em) {
+  .form__btn {
+    width: 85%;
+  }
 }
 .form__btn:focus {
   outline: none;

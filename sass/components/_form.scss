@@ -24,7 +24,7 @@
   @include responsive(48) {
     right: 3rem;
   }
-  @include responsive(36) {
+  @include responsive(25) {
     width: 5rem;
     height: 5rem;
     font-size: 4rem;
@@ -84,6 +84,9 @@
   &__image {
     width: 100%;
     padding: 0 8rem;
+    @include responsive(36) {
+      padding: 0 7rem;
+    }
   }
   &__form {
     display: grid;
@@ -106,9 +109,21 @@
     &:focus {
       outline: none;
     }
+    @include responsive(36) {
+      width: 80%;
+    }
+    @include responsive(25) {
+      width: 85%;
+    }
   }
   &__btn {
     width: 70%;
+    @include responsive(36) {
+      width: 80%;
+    }
+    @include responsive(25) {
+      width: 85%;
+    }
     margin: 0 auto;
     padding: 1.5rem 0;
     text-transform: uppercase;
