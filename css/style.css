@@ -38,7 +38,12 @@ body {
 }
 
 .header {
-  background-image: linear-gradient(to right bottom, rgba(54, 115, 207, 0.6), rgba(39, 36, 128, 0.6)), url("../../img/cover6.jpg");
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(54, 115, 207, 0.6),
+      rgba(39, 36, 128, 0.6)
+    ),
+    url("../../img/cover6.jpg");
   height: 70vh;
   background-position: center center;
   background-size: cover;
@@ -47,7 +52,8 @@ body {
   align-items: center;
   flex-direction: column;
 }
-.header .header__date, .header .header__title {
+.header .header__date,
+.header .header__title {
   color: var(--color-white);
 }
 .header__title {
@@ -164,5 +170,3 @@ body {
     font-size: 4rem;
   }
 }
-
-/*# sourceMappingURL=style.css.map */
