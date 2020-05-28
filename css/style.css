@@ -1,6 +1,6 @@
 :root {
-  --color-white: #f5faff;
-  --color-grey: rgb(63, 63, 63);
+  --color-white: #f7f7f7;
+  --color-grey: #485460;
   --color-primary: rgba(39, 36, 128, 0.89);
   --color-secondary: #1bc4fcfd;
 }
@@ -24,6 +24,7 @@ body {
   line-height: 1.6;
   font-size: 1.6rem;
   color: var(--color-grey);
+  background-color: var(--color-white);
   padding: 7rem;
 }
 @media only screen and (max-width: 62em) {
@@ -37,13 +38,17 @@ body {
   }
 }
 
+::placeholder {
+  color: rgba(63, 63, 63, 0.5);
+}
+
+.hideForm {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .header {
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(54, 115, 207, 0.6),
-      rgba(39, 36, 128, 0.6)
-    ),
-    url("../../img/cover6.jpg");
+  background-image: linear-gradient(to right bottom, rgba(54, 115, 207, 0.6), rgba(50, 48, 117, 0.6)), url("../../img/cover6.jpg");
   height: 70vh;
   background-position: center center;
   background-size: cover;
@@ -52,8 +57,7 @@ body {
   align-items: center;
   flex-direction: column;
 }
-.header .header__date,
-.header .header__title {
+.header .header__date, .header .header__title {
   color: var(--color-white);
 }
 .header__title {
@@ -85,7 +89,7 @@ body {
   padding: 2rem 0;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(39, 36, 128, 0.3);
+  border-bottom: 1px solid rgba(50, 48, 117, 0.3);
 }
 @media only screen and (max-width: 36em) {
   .inbox__item {
@@ -125,7 +129,7 @@ body {
 .inbox svg {
   width: 2.7rem;
   height: 2.7rem;
-  fill: rgba(39, 36, 128, 0.8);
+  fill: rgba(50, 48, 117, 0.8);
 }
 .inbox__complete {
   padding: 1rem 0;
@@ -133,10 +137,10 @@ body {
   color: rgba(63, 63, 63, 0.6);
 }
 
-.nav {
+.list {
   width: 6rem;
   height: 6rem;
-  background-color: rgba(39, 36, 128, 0.8);
+  background-color: #323075;
   color: var(--color-white);
   text-align: center;
   border-radius: 50%;
@@ -152,21 +156,115 @@ body {
   position: fixed;
   right: 7rem;
   bottom: 3rem;
+  cursor: pointer;
 }
 @media only screen and (max-width: 62em) {
-  .nav {
+  .list {
     right: 5rem;
   }
 }
 @media only screen and (max-width: 48em) {
-  .nav {
+  .list {
     right: 3rem;
   }
 }
 @media only screen and (max-width: 36em) {
-  .nav {
+  .list {
     width: 5rem;
     height: 5rem;
     font-size: 4rem;
   }
 }
+
+.list-form {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  flex-direction: row-reverse;
+}
+
+.form {
+  width: 35vw;
+  background-color: #f5faff;
+}
+@media only screen and (max-width: 62em) {
+  .form {
+    width: 45vw;
+  }
+}
+@media only screen and (max-width: 48em) {
+  .form {
+    width: 60vw;
+  }
+}
+@media only screen and (max-width: 36em) {
+  .form {
+    width: 75vw;
+  }
+}
+@media only screen and (max-width: 25em) {
+  .form {
+    width: 100vw;
+  }
+}
+.form__header {
+  display: grid;
+  grid-template-areas: "arrow title";
+  padding: 3rem;
+}
+.form__icon {
+  grid-area: arrow;
+  cursor: pointer;
+}
+.form__heading {
+  grid-area: title;
+  color: var(--color-primary);
+  font-size: 2rem;
+  font-weight: 400;
+}
+.form svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: var(--color-primary);
+}
+.form__image {
+  width: 100%;
+  padding: 0 8rem;
+}
+.form__form {
+  display: grid;
+  padding: 3rem 0;
+  grid-template-areas: "task" "time" "button";
+  row-gap: 2rem;
+}
+.form__input {
+  width: 70%;
+  margin: 0 auto;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid rgba(50, 48, 117, 0.4);
+  padding: 1.5rem 0;
+  font-size: 16px;
+}
+.form__input:focus {
+  outline: none;
+}
+.form__btn {
+  width: 70%;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+  text-transform: uppercase;
+  border: none;
+  background-color: #323075;
+  color: #f5faff;
+  margin-top: 2rem;
+}
+.form__btn:focus {
+  outline: none;
+}
+
+/*# sourceMappingURL=style.css.map */

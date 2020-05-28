@@ -23,15 +23,15 @@
     @include responsive(36) {
       display: grid;
       grid-template-areas:
-        "texts icons"
-        "time icons";
+        'texts icons'
+        'time icons';
       row-gap: 1rem;
     }
     @include responsive(25) {
       grid-template-areas:
-        "texts"
-        "time"
-        "icons";
+        'texts'
+        'time'
+        'icons';
       row-gap: 1rem;
     }
   }

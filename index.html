@@ -8,7 +8,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="shortcut icon" href="img/logo.png" />
+    <link rel="shortcut icon" href="img/logo7.png" />
     <title>To Do List</title>
   </head>
   <body>
@@ -21,7 +21,9 @@
         <h2 class="inbox__heading">Inbox(3)</h2>
         <!-- Item start -->
         <div class="inbox__item">
-          <p class="inbox__text">Mathematics chapter 19.2 asdfasdfsdfasdfasdfasdfsdfsdfsd</p>
+          <p class="inbox__text">
+            Mathematics chapter 19.2 asdfasdfsdfasdfasdfasdfsdfsdfsd
+          </p>
           <span class="inbox__time">9:30 am</span>
           <div class="inbox__icon">
             <span class="inbox__icon--completed">
@@ -78,9 +80,30 @@
           Complete (0)
         </div>
       </div>
-      <div class="nav">
+      <div class="list" id="showForm">
         +
       </div>
+      <div class="list-form">
+        <div class="form">
+          <div class="form__header">
+            <span class="form__icon" id="backArrow">
+              <svg>
+                <use xlink:href="img/symbol-defs.svg#icon-arrow-left2"></use>
+              </svg>
+            </span>
+            <h3 class="form__heading">
+              Add new list
+            </h3>
+          </div>
+          <img src="img/logo4.png" alt="Imgae" class="form__image" />
+          <form action="" class="form__form">
+            <input type="text" placeholder="Task (study)" id="task" class="form__input" required />
+            <input type="text" placeholder="Time (9 am)" id="time" class="form__input" required />
+            <button class="form__btn">Add your list</button>
+          </form>
+        </div>
+      </div>
     </main>
+    <script src="js/index.js"></script>
   </body>
 </html>

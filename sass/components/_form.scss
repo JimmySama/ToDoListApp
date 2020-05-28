@@ -1,7 +1,7 @@
-.nav {
+.list {
   width: 6rem;
   height: 6rem;
-  background-color: rgba($color-primary, 0.8);
+  background-color: rgba($color-primary, 1);
   color: var(--color-white);
   text-align: center;
   border-radius: 50%;
@@ -17,6 +17,7 @@
   position: fixed;
   right: 7rem;
   bottom: 3rem;
+  cursor: pointer;
   @include responsive(62) {
     right: 5rem;
   }
@@ -27,5 +28,96 @@
     width: 5rem;
     height: 5rem;
     font-size: 4rem;
+  }
+}
+.list-form {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  //   display: flex;
+
+  flex-direction: row-reverse;
+}
+.form {
+  width: 35vw;
+
+  @include responsive(62) {
+    width: 45vw;
+  }
+  @include responsive(48) {
+    width: 60vw;
+  }
+  @include responsive(36) {
+    width: 75vw;
+  }
+  @include responsive(25) {
+    width: 100vw;
+  }
+  //   background-image: linear-gradient(to bottom, rgba($color-white, 1), rgba($color-white, 1));
+  background-color: rgba($color-white, 1);
+
+  &__header {
+    display: grid;
+    grid-template-areas: 'arrow title';
+    padding: 3rem;
+  }
+
+  &__icon {
+    grid-area: arrow;
+    cursor: pointer;
+  }
+  &__heading {
+    grid-area: title;
+    color: var(--color-primary);
+    font-size: 2rem;
+    font-weight: 400;
+  }
+  svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: var(--color-primary);
+  }
+  &__image {
+    width: 100%;
+    padding: 0 8rem;
+  }
+  &__form {
+    display: grid;
+    padding: 3rem 0;
+    grid-template-areas:
+      'task'
+      'time'
+      'button';
+    row-gap: 2rem;
+  }
+
+  &__input {
+    width: 70%;
+    margin: 0 auto;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid rgba($color-primary, 0.4);
+    padding: 1.5rem 0;
+    font-size: 16px;
+    &:focus {
+      outline: none;
+    }
+  }
+  &__btn {
+    width: 70%;
+    margin: 0 auto;
+    padding: 1.5rem 0;
+    text-transform: uppercase;
+    border: none;
+    background-color: rgba($color-primary, 1);
+    color: $color-white;
+    margin-top: 2rem;
+    &:focus {
+      outline: none;
+    }
   }
 }

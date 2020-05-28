@@ -1,6 +1,6 @@
 :root {
-  --color-white: #f5faff;
-  --color-grey: rgb(63, 63, 63);
+  --color-white: #f7f7f7;
+  --color-grey: #485460;
   --color-primary: rgba(39, 36, 128, 0.89);
   --color-secondary: #1bc4fcfd;
 }
@@ -20,11 +20,12 @@ html {
   box-sizing: border-box;
 }
 body {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   line-height: 1.6;
   font-size: 1.6rem;
   color: var(--color-grey);
+  background-color: var(--color-white);
   padding: 7rem;
   @include responsive(62) {
     padding: 5rem;
@@ -32,4 +33,12 @@ body {
   @include responsive(48) {
     padding: 0rem;
   }
+}
+::placeholder {
+  color: rgba($color-grey, 0.5);
+}
+
+.hideForm {
+  opacity: 0;
+  pointer-events: none;
 }
