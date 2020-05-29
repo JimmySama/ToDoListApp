@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   line-height: 1.6;
   font-size: 1.6rem;
@@ -38,6 +38,22 @@ body {
   }
 }
 
+::-webkit-input-placeholder {
+  color: rgba(63, 63, 63, 0.5);
+}
+
+::-moz-placeholder {
+  color: rgba(63, 63, 63, 0.5);
+}
+
+:-ms-input-placeholder {
+  color: rgba(63, 63, 63, 0.5);
+}
+
+::-ms-input-placeholder {
+  color: rgba(63, 63, 63, 0.5);
+}
+
 ::placeholder {
   color: rgba(63, 63, 63, 0.5);
 }
@@ -54,7 +70,7 @@ body {
 }
 
 .header {
-  background-image: linear-gradient(to right bottom, rgba(54, 115, 207, 0.6), rgba(50, 48, 117, 0.6)), url("../../img/cover6.jpg");
+  background-image: linear-gradient(to right bottom, rgba(54, 115, 207, 0.6), rgba(50, 48, 117, 0.6)), url('../../img/cover6.jpg');
   height: 70vh;
   background-position: center center;
   background-size: cover;
@@ -63,7 +79,8 @@ body {
   align-items: center;
   flex-direction: column;
 }
-.header .header__date, .header .header__title {
+.header .header__date,
+.header .header__title {
   color: var(--color-white);
 }
 .header__title {
@@ -100,7 +117,7 @@ body {
 @media only screen and (max-width: 36em) {
   .inbox__item {
     display: grid;
-    grid-template-areas: "texts icons" "time icons";
+    grid-template-areas: 'texts icons' 'time icons';
     row-gap: 1rem;
   }
 }
@@ -218,7 +235,7 @@ body {
 }
 .form__header {
   display: grid;
-  grid-template-areas: "arrow title";
+  grid-template-areas: 'arrow title';
   padding: 3rem;
 }
 .form__icon {
@@ -248,7 +265,7 @@ body {
 .form__form {
   display: grid;
   padding: 3rem 0;
-  grid-template-areas: "task" "time" "button";
+  grid-template-areas: 'task' 'time' 'button';
   row-gap: 2rem;
 }
 .form__input {
@@ -320,7 +337,7 @@ body {
   padding: 4rem;
   text-align: center;
   display: grid;
-  grid-template-areas: "heading" "form";
+  grid-template-areas: 'heading' 'form';
   row-gap: 1rem;
 }
 @media only screen and (max-width: 25em) {
@@ -358,7 +375,7 @@ body {
   padding: 4rem;
   text-align: center;
   display: grid;
-  grid-template-areas: "heading" "form";
+  grid-template-areas: 'heading' 'form';
   row-gap: 1rem;
 }
 .decision-delete__heading {
@@ -389,5 +406,3 @@ body {
     font-size: 1.4rem;
   }
 }
-
-/*# sourceMappingURL=style.css.map */
