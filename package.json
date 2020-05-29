@@ -4,8 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch:js": "parcel watch ./js/index.js --out-dir ./js --out-file bundle.js",
+    "build:js": "parcel build ./js/index.js --out-dir ./js --out-file bundle.js"
   },
   "author": "Htut Wai Phyoe",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.10.1",
+    "D": "^1.0.0"
+  }
 }

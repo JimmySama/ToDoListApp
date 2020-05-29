@@ -1,0 +1,11 @@
+.footer {
+  width: 100%;
+  background-color: $color-primary;
+  padding: 3rem;
+  color: $color-white;
+  text-align: center;
+  @include responsive(25) {
+    padding: 2.5rem;
+    font-size: 1.4rem;
+  }
+}

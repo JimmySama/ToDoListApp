@@ -369,4 +369,18 @@ body {
   color: #f5faff;
 }
 
+.footer {
+  width: 100%;
+  background-color: #323075;
+  padding: 3rem;
+  color: #f5faff;
+  text-align: center;
+}
+@media only screen and (max-width: 25em) {
+  .footer {
+    padding: 2.5rem;
+    font-size: 1.4rem;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
