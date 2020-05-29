@@ -47,6 +47,12 @@ body {
   pointer-events: none;
 }
 
+.bodyFull {
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+
 .header {
   background-image: linear-gradient(to right bottom, rgba(54, 115, 207, 0.6), rgba(50, 48, 117, 0.6)), url("../../img/cover6.jpg");
   height: 70vh;

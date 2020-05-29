@@ -1,3 +1,4 @@
+export const body = document.querySelector('body');
 export const backArrow = document.getElementById('backArrow');
 export const addbtn = document.getElementById('showForm');
 export const listForm = document.querySelector('.list-form');

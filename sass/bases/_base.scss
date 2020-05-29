@@ -42,3 +42,8 @@ body {
   opacity: 0;
   pointer-events: none;
 }
+.bodyFull {
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+}

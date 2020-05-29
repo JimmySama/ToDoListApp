@@ -6583,7 +6583,9 @@ try {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.itemBox = exports.time = exports.task = exports.addForm = exports.inbox = exports.today = exports.completedCancelBtn = exports.deleteYesBtn = exports.deleteCancelBtn = exports.completedBox = exports.deleteBox = exports.listForm = exports.addbtn = exports.backArrow = void 0;
+exports.itemBox = exports.time = exports.task = exports.addForm = exports.inbox = exports.today = exports.completedCancelBtn = exports.deleteYesBtn = exports.deleteCancelBtn = exports.completedBox = exports.deleteBox = exports.listForm = exports.addbtn = exports.backArrow = exports.body = void 0;
+var body = document.querySelector('body');
+exports.body = body;
 var backArrow = document.getElementById('backArrow');
 exports.backArrow = backArrow;
 var addbtn = document.getElementById('showForm');
@@ -6889,7 +6891,7 @@ if (localStorage.getItem('items')) {
 
   if (markups) {
     markups.forEach(function (markup) {
-      return DOMs.itemBox.insertAdjacentHTML('afterbegin', markup);
+      return DOMs.itemBox.insertAdjacentHTML('afterbegin', markup[0]);
     });
   }
 } //DOMs Manipulation
@@ -6897,20 +6899,39 @@ if (localStorage.getItem('items')) {
 
 DOMs.backArrow.addEventListener('click', function () {
   DOMs.listForm.style.display = 'none';
+  DOMs.body.classList.remove('bodyFull');
 });
 DOMs.addbtn.addEventListener('click', function () {
   DOMs.listForm.style.display = 'flex';
-}); // inbox__container.addEventListener('click', (e) => {
-//   const element = e.target.closest('div');
-//   DOMs.deleteBox.style.display = 'flex';
-//   if (DOMs.deleteYesBtn) {
-//     DOMs.deleteYesBtn.addEventListener('click', () => {
-//       element.parentElement.parentElement.removeChild(element.parentElement);
-//       DOMs.deleteBox.style.display = 'none';
-//     });
-//   }
-// });
-// DOMs.deleteCancelBtn.addEventListener('click', () => {
+  DOMs.body.classList.add('bodyFull');
+});
+DOMs.itemBox.addEventListener('click', function (e) {
+  var element = e.target.closest('span');
+  var num = element.parentElement.parentElement.dataset.index;
+  DOMs.deleteBox.style.display = 'flex';
+  document.querySelector('body').classList.add('bodyFull');
+
+  if (DOMs.deleteYesBtn) {
+    DOMs.deleteYesBtn.addEventListener('click', function () {
+      var index = markups.findIndex(function (curr) {
+        return curr[1] == num;
+      });
+      markups.splice(index, 1);
+      localStorage.setItem('items', JSON.stringify(markups));
+      element.parentElement.parentElement.parentElement.removeChild(element.parentElement.parentElement);
+      DOMs.deleteBox.style.display = 'none';
+      document.querySelector('body').classList.remove('bodyFull');
+      location.reload(true);
+    });
+  }
+
+  if (DOMs.deleteCancelBtn) {
+    DOMs.deleteCancelBtn.addEventListener('click', function () {
+      DOMs.deleteBox.style.display = 'none';
+      document.querySelector('body').classList.remove('bodyFull');
+    });
+  }
+}); // DOMs.deleteCancelBtn.addEventListener('click', () => {
 //   DOMs.deleteBox.style.display = 'none';
 // });
 // DOMs.completedBtnsArr.forEach((cur) => {
@@ -6927,8 +6948,9 @@ DOMs.addForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var task = DOMs.task.value;
   var time = DOMs.time.value;
-  var markup = "<div class=\"inbox__item\">\n  <p class=\"inbox__text\">\n  ".concat(task, "\n  </p>\n  <span class=\"inbox__time\">").concat(time, "</span>\n  <div class=\"inbox__icon\">\n    <span class=\"inbox__icon--completed\">\n      <svg>\n        <use xlink:href=\"img/symbol-defs.svg#icon-check-circle-o\"></use>\n      </svg>\n    </span>\n    <span class=\"inbox__icon--delete\">\n      <svg>\n        <use xlink:href=\"img/symbol-defs.svg#icon-times-circle-o\"></use>\n      </svg>\n    </span>\n  </div>\n  <div class=\"inbox__complete\">Completed\n  </div>\n</div>");
-  markups.push(markup);
+  var random = Math.random();
+  var markup = "<div class=\"inbox__item\" data-index=".concat(random, "><p class=\"inbox__text\">").concat(task, "</p>\n  <span class=\"inbox__time\">").concat(time, "</span><div class=\"inbox__icon\"><span class=\"inbox__icon--completed\">\n  <svg><use xlink:href=\"img/symbol-defs.svg#icon-check-circle-o\"></use></svg></span>\n  <span class=\"inbox__icon--delete\"><svg><use xlink:href=\"img/symbol-defs.svg#icon-times-circle-o\"></use></svg></span></div>\n  <div class=\"inbox__complete\">Completed</div></div>");
+  markups.push([markup, random]);
   localStorage.setItem('items', JSON.stringify(markups));
   DOMs.itemBox.insertAdjacentHTML('afterbegin', markup);
   DOMs.task.value = '';
