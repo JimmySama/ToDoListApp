@@ -38,22 +38,6 @@ body {
   }
 }
 
-::-webkit-input-placeholder {
-  color: rgba(63, 63, 63, 0.5);
-}
-
-::-moz-placeholder {
-  color: rgba(63, 63, 63, 0.5);
-}
-
-:-ms-input-placeholder {
-  color: rgba(63, 63, 63, 0.5);
-}
-
-::-ms-input-placeholder {
-  color: rgba(63, 63, 63, 0.5);
-}
-
 ::placeholder {
   color: rgba(63, 63, 63, 0.5);
 }
@@ -122,8 +106,6 @@ body {
 }
 @media only screen and (max-width: 25em) {
   .inbox__item {
-    grid-template-areas: "texts" "time" "icons";
-    row-gap: 1rem;
     padding: 1rem 0;
   }
 }
@@ -395,6 +377,7 @@ body {
 
 .footer {
   width: 100%;
+  margin-top: 5rem;
   background-color: #323075;
   padding: 3rem;
   color: #f5faff;
@@ -406,3 +389,5 @@ body {
     font-size: 1.4rem;
   }
 }
+
+/*# sourceMappingURL=style.css.map */

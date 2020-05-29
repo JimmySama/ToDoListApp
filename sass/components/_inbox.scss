@@ -1,5 +1,6 @@
 .inbox {
   width: 75%;
+
   @include responsive(62) {
     width: 100%;
   }
@@ -29,11 +30,6 @@
       row-gap: 1rem;
     }
     @include responsive(25) {
-      grid-template-areas:
-        'texts'
-        'time'
-        'icons';
-      row-gap: 1rem;
       padding: 1rem 0;
     }
   }
