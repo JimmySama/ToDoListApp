@@ -124,6 +124,7 @@
   }
   &__btn {
     width: 70%;
+    cursor: pointer;
     @include responsive(36) {
       width: 80%;
     }

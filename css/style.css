@@ -38,6 +38,22 @@ body {
   }
 }
 
+::-webkit-input-placeholder {
+  color: rgba(63, 63, 63, 0.5);
+}
+
+::-moz-placeholder {
+  color: rgba(63, 63, 63, 0.5);
+}
+
+:-ms-input-placeholder {
+  color: rgba(63, 63, 63, 0.5);
+}
+
+::-ms-input-placeholder {
+  color: rgba(63, 63, 63, 0.5);
+}
+
 ::placeholder {
   color: rgba(63, 63, 63, 0.5);
 }
@@ -282,6 +298,7 @@ body {
 }
 .form__btn {
   width: 70%;
+  cursor: pointer;
   margin: 0 auto;
   padding: 1.5rem 0;
   text-transform: uppercase;
@@ -389,5 +406,3 @@ body {
     font-size: 1.4rem;
   }
 }
-
-/*# sourceMappingURL=style.css.map */

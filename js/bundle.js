@@ -6583,7 +6583,7 @@ try {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.itemBox = exports.time = exports.task = exports.addForm = exports.inbox = exports.today = exports.completedCancelBtn = exports.deleteYesBtn = exports.deleteCancelBtn = exports.completedBox = exports.deleteBox = exports.listForm = exports.addbtn = exports.backArrow = exports.body = void 0;
+exports.completedText = exports.itemBox = exports.time = exports.task = exports.addForm = exports.inbox = exports.today = exports.deleteYesBtn = exports.deleteCancelBtn = exports.deleteBox = exports.listForm = exports.addbtn = exports.backArrow = exports.body = void 0;
 var body = document.querySelector('body');
 exports.body = body;
 var backArrow = document.getElementById('backArrow');
@@ -6596,16 +6596,15 @@ var listForm = document.querySelector('.list-form'); // const deleteBtns = docum
 // export const completedBtnsArr = Array.from(completedBtns);
 
 exports.listForm = listForm;
-var deleteBox = document.getElementById('deleted');
+var deleteBox = document.getElementById('deleted'); // export const completedBox = document.getElementById('completed');
+
 exports.deleteBox = deleteBox;
-var completedBox = document.getElementById('completed');
-exports.completedBox = completedBox;
 var deleteCancelBtn = document.querySelector('.btn-cancel-delete');
 exports.deleteCancelBtn = deleteCancelBtn;
-var deleteYesBtn = document.querySelector('.btn-yes-delete');
+var deleteYesBtn = document.querySelector('.btn-yes-delete'); // export const completedCancelBtn = document.querySelector('.btn-cancel-completed');
+// export const completedYesBtn = document.querySelector('.btn-yes-completed');
+
 exports.deleteYesBtn = deleteYesBtn;
-var completedCancelBtn = document.querySelector('.btn-cancel-completed');
-exports.completedCancelBtn = completedCancelBtn;
 var today = document.querySelector('.header__date');
 exports.today = today;
 var inbox = document.querySelector('.inbox__heading');
@@ -6618,6 +6617,8 @@ var time = document.getElementById('time');
 exports.time = time;
 var itemBox = document.querySelector('.inbox__container');
 exports.itemBox = itemBox;
+var completedText = document.querySelector('.inbox__complete');
+exports.completedText = completedText;
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -6908,48 +6909,64 @@ DOMs.addbtn.addEventListener('click', function () {
 DOMs.itemBox.addEventListener('click', function (e) {
   var element = e.target.closest('span');
   var num = element.parentElement.parentElement.dataset.index;
-  DOMs.deleteBox.style.display = 'flex';
-  document.querySelector('body').classList.add('bodyFull');
+  var type = element.dataset.type;
 
-  if (DOMs.deleteYesBtn) {
-    DOMs.deleteYesBtn.addEventListener('click', function () {
-      var index = markups.findIndex(function (curr) {
-        return curr[1] == num;
+  if (type === 'delete') {
+    DOMs.deleteBox.style.display = 'flex';
+    document.querySelector('body').classList.add('bodyFull');
+
+    if (DOMs.deleteYesBtn) {
+      DOMs.deleteYesBtn.addEventListener('click', function () {
+        var index = markups.findIndex(function (curr) {
+          return curr[1] == num;
+        });
+        markups.splice(index, 1);
+        localStorage.setItem('items', JSON.stringify(markups));
+        element.parentElement.parentElement.parentElement.removeChild(element.parentElement.parentElement);
+        DOMs.deleteBox.style.display = 'none';
+        document.querySelector('body').classList.remove('bodyFull');
+        location.reload(true);
       });
-      markups.splice(index, 1);
-      localStorage.setItem('items', JSON.stringify(markups));
-      element.parentElement.parentElement.parentElement.removeChild(element.parentElement.parentElement);
-      DOMs.deleteBox.style.display = 'none';
-      document.querySelector('body').classList.remove('bodyFull');
-      location.reload(true);
-    });
-  }
+    }
 
-  if (DOMs.deleteCancelBtn) {
-    DOMs.deleteCancelBtn.addEventListener('click', function () {
-      DOMs.deleteBox.style.display = 'none';
-      document.querySelector('body').classList.remove('bodyFull');
-    });
-  }
-}); // DOMs.deleteCancelBtn.addEventListener('click', () => {
-//   DOMs.deleteBox.style.display = 'none';
-// });
-// DOMs.completedBtnsArr.forEach((cur) => {
-//   cur.addEventListener('click', () => {
-//     DOMs.completedBox.style.display = 'flex';
-//   });
-// });
-// DOMs.completedCancelBtn.addEventListener('click', () => {
-//   DOMs.completedBox.style.display = 'none';
-// });
-//Add
+    if (DOMs.deleteCancelBtn) {
+      DOMs.deleteCancelBtn.addEventListener('click', function () {
+        DOMs.deleteBox.style.display = 'none';
+        document.querySelector('body').classList.remove('bodyFull');
+      });
+    }
+  } // if (type === 'completed') {
+  //   DOMs.completedBox.style.display = 'flex';
+  //   document.querySelector('body').classList.add('bodyFull');
+  //   if (DOMs.completedYesBtn) {
+  //     DOMs.completedYesBtn.addEventListener('click', () => {
+  //       element.parentElement.style.display = 'none';
+  //       DOMs.completedBox.style.display = 'none';
+  //       document.querySelector('.inbox__complete').style.display = 'block';
+  //       const index = markups.findIndex((curr) => curr[1] == num);
+  //       markups[index][0] = `<div class="inbox__item" data-index=${random}><p class="inbox__text">${task}</p>
+  //       <span class="inbox__time">${time}</span><div class="inbox__icon"><span class="inbox__icon--completed" data-type="completed">
+  //       <svg><use xlink:href="img/symbol-defs.svg#icon-check-circle-o"></use></svg></span>
+  //       <span class="inbox__icon--delete" data-type="delete"><svg><use xlink:href="img/symbol-defs.svg#icon-times-circle-o"></use></svg></span></div>
+  //       <div class="inbox__complete">Completed</div></div>`;
+  //     });
+  //   }
+  //   if (DOMs.completedCancelBtn) {
+  //     DOMs.completedCancelBtn.addEventListener('click', () => {
+  //       DOMs.completedBox.style.display = 'none';
+  //       document.querySelector('body').classList.remove('bodyFull');
+  //     });
+  //   }
+  // }
+
+}); //Add
 
 DOMs.addForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var task = DOMs.task.value;
   var time = DOMs.time.value;
   var random = Math.random();
-  var markup = "<div class=\"inbox__item\" data-index=".concat(random, "><p class=\"inbox__text\">").concat(task, "</p>\n  <span class=\"inbox__time\">").concat(time, "</span><div class=\"inbox__icon\"><span class=\"inbox__icon--completed\">\n  <svg><use xlink:href=\"img/symbol-defs.svg#icon-check-circle-o\"></use></svg></span>\n  <span class=\"inbox__icon--delete\"><svg><use xlink:href=\"img/symbol-defs.svg#icon-times-circle-o\"></use></svg></span></div>\n  <div class=\"inbox__complete\">Completed</div></div>");
+  var markup = "<div class=\"inbox__item\" data-index=".concat(random, "><p class=\"inbox__text\">").concat(task, "</p>\n    <span class=\"inbox__time\">").concat(time, "</span><div class=\"inbox__icon\">\n    <span class=\"inbox__icon--delete\" data-type=\"delete\"><svg><use xlink:href=\"img/symbol-defs.svg#icon-cancel-circle\"></use></svg></span></div>\n    <div class=\"inbox__complete\">Completed</div></div>");
   markups.push([markup, random]);
   localStorage.setItem('items', JSON.stringify(markups));
   DOMs.itemBox.insertAdjacentHTML('afterbegin', markup);

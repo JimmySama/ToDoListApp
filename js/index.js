@@ -26,45 +26,57 @@ DOMs.addbtn.addEventListener('click', () => {
 DOMs.itemBox.addEventListener('click', (e) => {
   const element = e.target.closest('span');
   const num = element.parentElement.parentElement.dataset.index;
+  const type = element.dataset.type;
+  if (type === 'delete') {
+    DOMs.deleteBox.style.display = 'flex';
+    document.querySelector('body').classList.add('bodyFull');
 
-  DOMs.deleteBox.style.display = 'flex';
-  document.querySelector('body').classList.add('bodyFull');
+    if (DOMs.deleteYesBtn) {
+      DOMs.deleteYesBtn.addEventListener('click', () => {
+        const index = markups.findIndex((curr) => curr[1] == num);
 
-  if (DOMs.deleteYesBtn) {
-    DOMs.deleteYesBtn.addEventListener('click', () => {
-      const index = markups.findIndex((curr) => curr[1] == num);
+        markups.splice(index, 1);
 
-      markups.splice(index, 1);
+        localStorage.setItem('items', JSON.stringify(markups));
+        element.parentElement.parentElement.parentElement.removeChild(element.parentElement.parentElement);
+        DOMs.deleteBox.style.display = 'none';
+        document.querySelector('body').classList.remove('bodyFull');
 
-      localStorage.setItem('items', JSON.stringify(markups));
-      element.parentElement.parentElement.parentElement.removeChild(element.parentElement.parentElement);
-      DOMs.deleteBox.style.display = 'none';
-      document.querySelector('body').classList.remove('bodyFull');
-
-      location.reload(true);
-    });
+        location.reload(true);
+      });
+    }
+    if (DOMs.deleteCancelBtn) {
+      DOMs.deleteCancelBtn.addEventListener('click', () => {
+        DOMs.deleteBox.style.display = 'none';
+        document.querySelector('body').classList.remove('bodyFull');
+      });
+    }
   }
-  if (DOMs.deleteCancelBtn) {
-    DOMs.deleteCancelBtn.addEventListener('click', () => {
-      DOMs.deleteBox.style.display = 'none';
-      document.querySelector('body').classList.remove('bodyFull');
-    });
-  }
+  // if (type === 'completed') {
+  //   DOMs.completedBox.style.display = 'flex';
+  //   document.querySelector('body').classList.add('bodyFull');
+
+  //   if (DOMs.completedYesBtn) {
+  //     DOMs.completedYesBtn.addEventListener('click', () => {
+  //       element.parentElement.style.display = 'none';
+  //       DOMs.completedBox.style.display = 'none';
+  //       document.querySelector('.inbox__complete').style.display = 'block';
+  //       const index = markups.findIndex((curr) => curr[1] == num);
+  //       markups[index][0] = `<div class="inbox__item" data-index=${random}><p class="inbox__text">${task}</p>
+  //       <span class="inbox__time">${time}</span><div class="inbox__icon"><span class="inbox__icon--completed" data-type="completed">
+  //       <svg><use xlink:href="img/symbol-defs.svg#icon-check-circle-o"></use></svg></span>
+  //       <span class="inbox__icon--delete" data-type="delete"><svg><use xlink:href="img/symbol-defs.svg#icon-times-circle-o"></use></svg></span></div>
+  //       <div class="inbox__complete">Completed</div></div>`;
+  //     });
+  //   }
+  //   if (DOMs.completedCancelBtn) {
+  //     DOMs.completedCancelBtn.addEventListener('click', () => {
+  //       DOMs.completedBox.style.display = 'none';
+  //       document.querySelector('body').classList.remove('bodyFull');
+  //     });
+  //   }
+  // }
 });
-
-// DOMs.deleteCancelBtn.addEventListener('click', () => {
-//   DOMs.deleteBox.style.display = 'none';
-// });
-
-// DOMs.completedBtnsArr.forEach((cur) => {
-//   cur.addEventListener('click', () => {
-//     DOMs.completedBox.style.display = 'flex';
-//   });
-// });
-
-// DOMs.completedCancelBtn.addEventListener('click', () => {
-//   DOMs.completedBox.style.display = 'none';
-// });
 
 //Add
 DOMs.addForm.addEventListener('submit', (e) => {
@@ -73,10 +85,9 @@ DOMs.addForm.addEventListener('submit', (e) => {
   const time = DOMs.time.value;
   let random = Math.random();
   const markup = `<div class="inbox__item" data-index=${random}><p class="inbox__text">${task}</p>
-  <span class="inbox__time">${time}</span><div class="inbox__icon"><span class="inbox__icon--completed">
-  <svg><use xlink:href="img/symbol-defs.svg#icon-check-circle-o"></use></svg></span>
-  <span class="inbox__icon--delete"><svg><use xlink:href="img/symbol-defs.svg#icon-times-circle-o"></use></svg></span></div>
-  <div class="inbox__complete">Completed</div></div>`;
+    <span class="inbox__time">${time}</span><div class="inbox__icon">
+    <span class="inbox__icon--delete" data-type="delete"><svg><use xlink:href="img/symbol-defs.svg#icon-cancel-circle"></use></svg></span></div>
+    <div class="inbox__complete">Completed</div></div>`;
 
   markups.push([markup, random]);
   localStorage.setItem('items', JSON.stringify(markups));
