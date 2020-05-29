@@ -1,12 +1,17 @@
 import '@babel/polyfill';
 import * as DOMs from './DOMS';
 
-//UI update
-const today = new Date();
-const month = ['Jan', 'Feb', 'Mar', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-DOMs.today.textContent = `${month[today.getMonth()]} ${today.getDay()}, ${today.getFullYear()} `;
+//Global variables
+let markups = [];
 
-// DOMs.inbox.textContent = `INBOX(${DOMs.deleteBtnsArr.length})`;
+// localStorage.setItem('items', []);
+if (localStorage.getItem('items')) {
+  markups = JSON.parse(localStorage.getItem('items'));
+  if (markups) {
+    markups.forEach((markup) => DOMs.itemBox.insertAdjacentHTML('afterbegin', markup));
+  }
+}
+
 //DOMs Manipulation
 DOMs.backArrow.addEventListener('click', () => {
   DOMs.listForm.style.display = 'none';
@@ -49,7 +54,9 @@ DOMs.addForm.addEventListener('submit', (e) => {
   const task = DOMs.task.value;
   const time = DOMs.time.value;
   const markup = `<div class="inbox__item">
-  <p class="inbox__text">${task}</p>
+  <p class="inbox__text">
+  ${task}
+  </p>
   <span class="inbox__time">${time}</span>
   <div class="inbox__icon">
     <span class="inbox__icon--completed">
@@ -63,10 +70,21 @@ DOMs.addForm.addEventListener('submit', (e) => {
       </svg>
     </span>
   </div>
+  <div class="inbox__complete">Completed
+  </div>
 </div>`;
 
+  markups.push(markup);
+  localStorage.setItem('items', JSON.stringify(markups));
   DOMs.itemBox.insertAdjacentHTML('afterbegin', markup);
   DOMs.task.value = '';
   DOMs.time.value = '';
   DOMs.listForm.style.display = 'none';
+  location.reload(true);
 });
+//UI update
+const today = new Date();
+const month = ['Jan', 'Feb', 'Mar', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+DOMs.today.textContent = `${month[today.getMonth()]} ${today.getDay()}, ${today.getFullYear()} `;
+
+DOMs.inbox.textContent = `INBOX(${markups.length})`;
