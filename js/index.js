@@ -81,8 +81,14 @@ DOMs.itemBox.addEventListener('click', (e) => {
 //Add
 DOMs.addForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const task = DOMs.task.value;
-  const time = DOMs.time.value;
+  let task = DOMs.task.value;
+  if (task.length > 20) {
+    task = task.substring(0, 20);
+  }
+  let time = DOMs.time.value;
+  if (time.length > 20) {
+    time = time.substring(0, 20);
+  }
   let random = Math.random();
   const markup = `<div class="inbox__item" data-index=${random}><p class="inbox__text">${task}</p>
     <span class="inbox__time">${time}</span><div class="inbox__icon">
@@ -100,6 +106,7 @@ DOMs.addForm.addEventListener('submit', (e) => {
 //UI update
 const today = new Date();
 const month = ['Jan', 'Feb', 'Mar', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-DOMs.today.textContent = `${month[today.getMonth()]} ${today.getDay()}, ${today.getFullYear()} `;
+const day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
+DOMs.today.textContent = `${month[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()} `;
 
 DOMs.inbox.textContent = `INBOX(${markups.length})`;
